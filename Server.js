@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const Bus = require('./Models/Bus');
 const mongoDB = require('./db');
+const port = process.env.PORT || 5000;
+
 mongoDB();
 const app = express();
 app.use(express.json());
@@ -10,6 +12,9 @@ app.use(cors());
 
 
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 app.get('/api/buses', async (req, res) => {
     const { origin, destination } = req.query;
@@ -30,7 +35,7 @@ app.get('/api/buses', async (req, res) => {
   });
 
 
-const port = 5000;
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
