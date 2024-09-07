@@ -39,3 +39,11 @@ app.get('/api/buses', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+setInterval(() => {
+  https.get('https://bus-backend-6qfs.onrender.com/', (res) => {
+    console.log(`Server hit with status code: ${res.statusCode}`);
+  }).on('error', (e) => {
+    console.error(`Got error: ${e.message}`);
+  });
+}, 3 * 60 * 1000); 
