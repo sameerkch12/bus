@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const Bus = require('./Models/Bus');
 const mongoDB = require('./db');
+const https = require('https'); 
 const port = process.env.PORT || 5000;
 
 mongoDB();
@@ -41,7 +42,7 @@ app.listen(port, () => {
 });
 
 setInterval(() => {
-  https.get('https://bus-backend-6qfs.onrender.com/', (res) => {
+  https.get('https://bus-backend-6qfs.onrender.com', (res) => {
     console.log(`Server hit with status code: ${res.statusCode}`);
   }).on('error', (e) => {
     console.error(`Got error: ${e.message}`);
