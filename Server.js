@@ -41,7 +41,7 @@ app.listen(port, () => {
 });
 
 setInterval(() => {
-  https.get('https://bus-backend-6qfs.onrender.com/', (res) => {
+  https.get('https://bus-backend-6qfs.onrender.com', (res) => {
     console.log(`Server hit with status code: ${res.statusCode}`);
   }).on('error', (e) => {
     console.error(`Got error: ${e.message}`);
